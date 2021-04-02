@@ -1,0 +1,209 @@
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+
+.comments-alt {
+  width: 16px;
+}
+.feedback--0 {
+  border: 1px solid black;
+  border-radius: 20px;
+  transform: translate(-50%, 20%);
+  padding: 5px;
+  float: right;
+  font-size: 16px;
+  text-align: center;
+  word-spacing: 5px;
+}
+.feedback--0 img {
+  width: 16px;
+  transform: translate(30%, 20%);
+}
+.btn img {
+  width: 30px;
+  height: 40px;
+  padding: 2px;
+}
+/* settings for smaller mac screens */
+.bug,
+.idea,
+.other {
+  width: 24px;
+  margin-left: 40px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  justify-content: center;
+  display: inline-block;
+
+  transform: translate(-70%, 50%);
+}
+.menu--bug,
+.menu--idea {
+  width: 12px;
+}
+.previous {
+  position: relative;
+  background-color: #f1f1f1;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  top: 1.5rem;
+  left: 2.5rem;
+  transform: translate(-510%, -80%);
+  font-size: 16px;
+}
+.report-issue {
+  transform: translate(-1%, -200%);
+}
+.severity {
+  transform: translate(-40%, 50%);
+}
+.assigned {
+  transform: translate(-37.5%, -20%);
+}
+.assigned-input {
+  transform: translate(28.5%, -140%);
+}
+.send-feedback {
+  transform: translate(-73.5%, 30%);
+  border-radius: 15px;
+  padding: 5px;
+  border: 1px solid black;
+  color: #fff;
+  background-color: #39a5fe;
+}
+#bugs {
+  transform: translate(-100%, -55%);
+}
+/* settings for smaller macscreen */
+.bugBtn,
+.ideaBtn,
+.otherBtn {
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  margin-left: -35px;
+  border-radius: 10px;
+  border: 1px solid black;
+  transform: translate(30%, -30%);
+}
+/* After effects of button click */
+
+/* .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+} */
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px 10px;
+  border: 1px solid #888;
+  width: auto;
+  height: 150px;
+  z-index: 11;
+  border-radius: 0px 0px 15px 15px;
+}
+.bugfield {
+  position: relative;
+  z-index: -1;
+  background-color: #fefefe;
+  padding: 20px 10px;
+  border: 1px solid #888;
+  width: 383px;
+  /* height: 152px; */
+  height: 250px;
+  transform: translate(-30%, -102%);
+  border-radius: 0px 0px 15px 15px;
+}
+#ideafield {
+  position: relative;
+  z-index: -1;
+  background-color: #fefefe;
+  padding: 20px 10px;
+  border: 1px solid #888;
+  width: 383px;
+  /* height: 152px; */
+  height: 150px;
+  transform: translate(-47.8%, -136%);
+  border-radius: 0px 0px 15px 15px;
+}
+#otherfield {
+  position: relative;
+  z-index: -1;
+  background-color: #fefefe;
+  padding: 20px 10px;
+  border: 1px solid #888;
+  width: 383px;
+  /* height: 152px; */
+  height: 150px;
+  transform: translate(-65.5%, -136%);
+  border-radius: 0px 0px 15px 15px;
+}
+textarea {
+  width: 300px;
+  height: 70px;
+}
+.close {
+  position: absolute;
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  top: -0.3rem;
+  right: 1.3rem;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* ----------------
+previous project 
+---------------- */
+
+/* draggable window */
+
+#draggable {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  width: 20%;
+  border-radius: 15px;
+}
+
+#draggableheader {
+  /* padding: 1px; */
+  cursor: move;
+  z-index: 10;
+  background-color: #39a5fe;
+  color: #fff;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <title>Feedback UI</title>
+  </head>
+  <body>
+    <div class="feedback-source">
+      <button id="myBtn" onclick="resizeWindow()" class="feedback--0">
+        <img src="comments-alt.svg" class="comments-alt" /> Feedback
+      </button>
+    </div>
+    <div id="draggable" class="hidden">
+      <div id="draggableheader">
+        <p class="menu"><strong>Feedback Menu</strong></p>
+      </div>
+      <div id="myModal" class="modal">
+        <!-- <p><strong>What's on your mind?</strong></p> -->
+        <div class="modal-content">
+          <button class="close">&times;</button>
+          <div>What's on your mind?</div>
+          <div class="feedback bug">
+            <button class="btn bugBtn"><img src="img/bug.svg" />Bug</button>
+            <div id="bugfield" class="bugfield hidden">
+              <!-- <a href="#" class="previous">&#8249;</a> -->
+              <button href="#" class="previous">&#8249;</button>
+              <p class="report-issue">
+                <img src="img/bug.svg" class="menu--bug" />Report an issue
+              </p>
+              <textarea
+                placeholder="What kind of bugs have you been experiencing?"
+                class=""
+              ></textarea>
+              <label for="bugs"><p class="severity">Severity:</p></label>
+              <select name="bugs" id="bugs">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+              <p class="assigned">Assigned to:</p>
+              <input class="assigned-input" />
+              <button class="send-feedback">Send Feedback</button>
+            </div>
+          </div>
+          <div class="feedback idea">
+            <button class="btn ideaBtn"><img src="img/bulb.svg" />Idea</button>
+            <div id="ideafield" class="hidden">
+              <p>
+                <img src="img/bulb.svg" class="menu--idea" />Please share an
+                idea
+              </p>
+              <textarea placeholder="I would love..."></textarea>
+            </div>
+          </div>
+          <div class="feedback other">
+            <button class="btn otherBtn">
+              <img src="img/more-alt.svg" />Other
+            </button>
+            <div id="otherfield" class="hidden">
+              <textarea
+                placeholder="Tell us anything, what do you want us to know?"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
