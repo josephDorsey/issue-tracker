@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="feedback-source">
-      <button id="myBtn" onclick="resizeWindow()" class="feedback--0">
+      <button id="myBtn" class="feedback--0">
         <img src="comments-alt.svg" class="comments-alt" /> Feedback
       </button>
     </div>
@@ -21,52 +21,63 @@
         <!-- <p><strong>What's on your mind?</strong></p> -->
         <div class="modal-content">
           <button class="close">&times;</button>
-          <div>What's on your mind?</div>
+          <div class="question">What's on your mind?</div>
           <div class="feedback bug">
-            <button class="btn bugBtn"><img src="img/bug.svg" />Bug</button>
+            <button class="btn bugBtn"><img src="img/icons8-bug-48.png" />Bug</button>
             <div id="bugfield" class="bugfield hidden">
-              <!-- <a href="#" class="previous">&#8249;</a> -->
-              <button href="#" class="previous">&#8249;</button>
+              <a href="#" class="previous--bug">&#8592</a>
+              <!-- <button class="previous">&#8249;</button> -->
               <p class="report-issue">
-                <img src="img/bug.svg" class="menu--bug" />Report an issue
+                <img src="/img/icons8-bug-48.png" class="menu--bug" />Report an issue
               </p>
               <textarea
-                placeholder="What kind of bugs have you been experiencing?"
-                class=""
+                placeholder="I noticed that..."
+                class="bug-text"
               ></textarea>
               <label for="bugs"><p class="severity">Severity:</p></label>
-              <select name="bugs" id="bugs">
+              <select name="bugs" id="bugs-severity">
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
               </select>
               <p class="assigned">Assigned to:</p>
               <input class="assigned-input" />
-              <button class="send-feedback">Send Feedback</button>
+              <button class="send-feedback send-fbug">Send Feedback</button>
+              
             </div>
           </div>
           <div class="feedback idea">
-            <button class="btn ideaBtn"><img src="img/bulb.svg" />Idea</button>
+            <button class="btn ideaBtn"><img src="img/icons8-light-on-16.png" class="bulb"/>Idea</button>
             <div id="ideafield" class="hidden">
-              <p>
-                <img src="img/bulb.svg" class="menu--idea" />Please share an
+                <a href="#" class="previous--idea">&#8592</a>
+                <p class="share-idea"><img src="img/icons8-light-on-16.png" class="menu--idea" />Please share an
                 idea
               </p>
-              <textarea placeholder="I would love..."></textarea>
+              <textarea class="share-idea-input" placeholder="I would love..."></textarea>
+              <button class="send-idea">Send Feedback</button>
             </div>
           </div>
           <div class="feedback other">
             <button class="btn otherBtn">
-              <img src="img/more-alt.svg" />Other
+              <img src="/img/more-alt.svg" />Other
             </button>
             <div id="otherfield" class="hidden">
-              <textarea
-                placeholder="Tell us anything, what do you want us to know?"
+                <a href="#" class="previous--other">&#8592</a>
+                <p class="tell-me">Tell me anything!</p>
+              <textarea class="tell-text"
+                placeholder="Tell me anything, what do you want me to know?"
               ></textarea>
+              <button class="send-other">Send Feedback</button>
             </div>
           </div>
+          <div id="send-feedback-modal" class="hidden">
+          <img src="/img/icons8-ok.svg">
+          <p class="feedback-text">Thanks! I have received your feedback.</p>
+          <button class="send-another">Send Another</button>
+      </div>
         </div>
       </div>
+      
     </div>
 
     <script src="/js/main.js"></script>

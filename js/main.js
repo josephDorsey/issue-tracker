@@ -1,6 +1,9 @@
+// DEFINITIONS
+
 const feedbackBtn = document.querySelector(".feedback--0");
 const draggable = document.getElementById("draggable");
 const draggableHead = document.getElementById("draggableheader");
+const feedbackModal = document.getElementById("send-feedback-modal");
 const modal = document.getElementById("myModal");
 const btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
@@ -10,13 +13,89 @@ const ideaBtn = document.querySelector(".ideaBtn");
 const ideaField = document.getElementById("ideafield");
 const otherBtn = document.querySelector(".otherBtn");
 const otherField = document.getElementById("otherfield");
+const previousBug = document.querySelector(".previous--bug");
+const previousIdea = document.querySelector(".previous--idea");
+const previousOther = document.querySelector(".previous--other");
+const menu = document.querySelector(".menu");
+const fbugBtn = document.querySelector(".send-fbug");
+// --------------------
+// BUTTON FUNCTIONALITY
+// --------------------
 btn.onclick = function () {
   modal.style.display = "block";
   draggableHead.classList.remove("hidden");
   draggable.classList.toggle("hidden");
 };
-// BUGBTN
+const hideButtons = function () {
+  bugBtn.style = "visibility: hidden";
+  ideaBtn.style = "visibility: hidden";
+  otherBtn.style = "visibility: hidden";
+};
+const showButtons = function () {
+  bugBtn.style = "visibility: visible";
+  ideaBtn.style = "visibility: visible";
+  otherBtn.style = "visibility: visible";
+};
+
+//---------------//
+// Feedback Button
+//--------------//
+fbugBtn.addEventListener("click", function () {
+  bugField.classList.add("hidden");
+  feedbackModal.classList.remove("hidden");
+  modal.style = "visibility: visible";
+});
+
+// --------------- //
+// PREVIOUS BUTTON
+// --------------- //
+
+// previous button return back to first menu
+previousBug.addEventListener("click", function () {
+  bugField.classList.add("hidden");
+
+  showButtons();
+  //   bugBtn.style.bottom = "-5px";
+  //   bugBtn.style = "visibility: visible";
+  //   ideaBtn.style = "visibility: visible";
+  //   otherBtn.style = "visibility: visible";
+  //   bugBtn.classList.remove("hidden");
+});
+
+//previous button for Idea
+previousIdea.addEventListener("click", function () {
+  ideaField.classList.add("hidden");
+
+  //   bugBtn.style.bottom = "-5px";
+  showButtons();
+  //   bugBtn.style = "visibility: visible";
+  //   ideaBtn.style = "visibility: visible";
+  //   otherBtn.style = "visibility: visible";
+  //   bugBtn.classList.remove("hidden");
+});
+//previous button for Other
+previousOther.addEventListener("click", function () {
+  otherField.classList.add("hidden");
+
+  //   bugBtn.style.bottom = "-5px";
+  showButtons();
+  //   bugBtn.style = "visibility: visible";
+  //   ideaBtn.style = "visibility: visible";
+  //   otherBtn.style = "visibility: visible";
+  //   bugBtn.classList.remove("hidden");
+});
+// ---------------------
+// BTN EVENT LISTENERS
+// ---------------------
+
+// bugBTN
 bugBtn.addEventListener("click", function () {
+  hideButtons();
+  //   bugBtn.style = "visibility: hidden";
+  //   ideaBtn.style = "visibility: hidden";
+  //   otherBtn.style = "visibility: hidden";
+  draggable.classList.remove("hidden");
+  draggableHead.classList.remove("hidden");
   if (bugField.classList.contains("hidden")) {
     ideaField.classList.add("hidden");
     bugField.classList.remove("hidden");
@@ -26,11 +105,17 @@ bugBtn.addEventListener("click", function () {
     ideaBtn.style.top = "";
   } else if (!bugField.classList.contains("hidden")) {
     bugField.classList.add("hidden");
-    bugBtn.style.top = "-0.5px";
+    bugBtn.style.bottom = "0px";
     ideaBtn.style.top = "-0.5px";
   }
 });
+
+//ideaBtn
 ideaBtn.addEventListener("click", function () {
+  hideButtons();
+  //   ideaBtn.style = "visibility: hidden";
+  draggable.classList.remove("hidden");
+  draggableHead.classList.remove("hidden");
   if (ideaField.classList.contains("hidden")) {
     bugField.classList.add("hidden");
     ideaField.classList.remove("hidden");
@@ -42,7 +127,12 @@ ideaBtn.addEventListener("click", function () {
     ideaBtn.style.top = "-0.5px";
   }
 });
+// otherBtn
 otherBtn.addEventListener("click", function () {
+  hideButtons();
+  //   otherBtn.style = "visibility: hidden";
+  draggable.classList.remove("hidden");
+  draggableHead.classList.remove("hidden");
   if (otherField.classList.contains("hidden")) {
     bugField.classList.add("hidden");
     ideaField.classList.add("hidden");
