@@ -1,10 +1,9 @@
 // DEFINITIONS
 
 const feedbackBtn = document.querySelector(".feedback--0");
-const draggable = document.getElementById("draggable");
-const draggableHead = document.getElementById("draggableheader");
 const feedbackModal = document.getElementById("send-feedback-modal");
 const modal = document.getElementById("myModal");
+const newModal = document.querySelector(".modal");
 const btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
 const bugBtn = document.querySelector(".bugBtn");
@@ -17,15 +16,37 @@ const previousBug = document.querySelector(".previous--bug");
 const previousIdea = document.querySelector(".previous--idea");
 const previousOther = document.querySelector(".previous--other");
 const menu = document.querySelector(".menu");
-const fbugBtn = document.querySelector(".send-fbug");
+const sendBugBtn = document.querySelector(".send-bug");
+const sendIdeaBtn = document.querySelector(".send-idea");
+const sendOtherBtn = document.querySelector(".send-other");
+const sendAnotherBtn = document.querySelector(".send-another");
+const bugText = document.querySelector(".bug-text");
+const bugSeverity = document.getElementById("bug-severity");
+const assignedInput = document.querySelector(".assigned-input");
+
 // --------------------
 // BUTTON FUNCTIONALITY
 // --------------------
 btn.onclick = function () {
-  modal.style.display = "block";
-  draggableHead.classList.remove("hidden");
-  draggable.classList.toggle("hidden");
+  //   span.style = "visibility: hidden";
+  if (modal.style.display === "none") {
+    modal.style.display = "block";
+  } else {
+    modal.style.display = "none";
+  }
 };
+// reset functionality
+const resetButton = function () {
+  bugText.value = "";
+  bugSeverity.selectedIndex = 0;
+  assignedInput.value = "";
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+  hideButtons();
+};
+
 const hideButtons = function () {
   bugBtn.style = "visibility: hidden";
   ideaBtn.style = "visibility: hidden";
@@ -37,13 +58,34 @@ const showButtons = function () {
   otherBtn.style = "visibility: visible";
 };
 
+sendAnotherBtn.addEventListener("click", function () {
+  feedbackModal.classList.add("hidden");
+  modal.style = "visibility: visible";
+  showButtons();
+});
+
 //---------------//
 // Feedback Button
 //--------------//
-fbugBtn.addEventListener("click", function () {
+
+sendBugBtn.addEventListener("click", function () {
   bugField.classList.add("hidden");
+  //   feedbackModal.classList.remove("hidden");
   feedbackModal.classList.remove("hidden");
-  modal.style = "visibility: visible";
+  //   modal.style = "visibility: visible";
+  modal.classList.remove("hidden");
+});
+sendIdeaBtn.addEventListener("click", function () {
+  ideaField.classList.add("hidden");
+  feedbackModal.classList.remove("hidden");
+  //   modal.style = "visibility: visible";
+  modal.classList.remove("hidden");
+});
+sendOtherBtn.addEventListener("click", function () {
+  otherField.classList.add("hidden");
+  feedbackModal.classList.remove("hidden");
+  //   modal.style = "visibility: visible";
+  modal.classList.remove("hidden");
 });
 
 // --------------- //
@@ -53,7 +95,7 @@ fbugBtn.addEventListener("click", function () {
 // previous button return back to first menu
 previousBug.addEventListener("click", function () {
   bugField.classList.add("hidden");
-
+  span.classList.toggle("hidden");
   showButtons();
   //   bugBtn.style.bottom = "-5px";
   //   bugBtn.style = "visibility: visible";
@@ -65,7 +107,7 @@ previousBug.addEventListener("click", function () {
 //previous button for Idea
 previousIdea.addEventListener("click", function () {
   ideaField.classList.add("hidden");
-
+  span.classList.toggle("hidden");
   //   bugBtn.style.bottom = "-5px";
   showButtons();
   //   bugBtn.style = "visibility: visible";
@@ -76,7 +118,7 @@ previousIdea.addEventListener("click", function () {
 //previous button for Other
 previousOther.addEventListener("click", function () {
   otherField.classList.add("hidden");
-
+  span.classList.toggle("hidden");
   //   bugBtn.style.bottom = "-5px";
   showButtons();
   //   bugBtn.style = "visibility: visible";
@@ -91,11 +133,12 @@ previousOther.addEventListener("click", function () {
 // bugBTN
 bugBtn.addEventListener("click", function () {
   hideButtons();
+  //   span.classList.remove("hidden");
+  span.classList.remove("hidden");
   //   bugBtn.style = "visibility: hidden";
   //   ideaBtn.style = "visibility: hidden";
   //   otherBtn.style = "visibility: hidden";
-  draggable.classList.remove("hidden");
-  draggableHead.classList.remove("hidden");
+
   if (bugField.classList.contains("hidden")) {
     ideaField.classList.add("hidden");
     bugField.classList.remove("hidden");
@@ -113,9 +156,9 @@ bugBtn.addEventListener("click", function () {
 //ideaBtn
 ideaBtn.addEventListener("click", function () {
   hideButtons();
+  span.classList.remove("hidden");
   //   ideaBtn.style = "visibility: hidden";
-  draggable.classList.remove("hidden");
-  draggableHead.classList.remove("hidden");
+
   if (ideaField.classList.contains("hidden")) {
     bugField.classList.add("hidden");
     ideaField.classList.remove("hidden");
@@ -130,9 +173,9 @@ ideaBtn.addEventListener("click", function () {
 // otherBtn
 otherBtn.addEventListener("click", function () {
   hideButtons();
+  span.classList.remove("hidden");
   //   otherBtn.style = "visibility: hidden";
-  draggable.classList.remove("hidden");
-  draggableHead.classList.remove("hidden");
+
   if (otherField.classList.contains("hidden")) {
     bugField.classList.add("hidden");
     ideaField.classList.add("hidden");
@@ -145,12 +188,6 @@ otherBtn.addEventListener("click", function () {
   }
 });
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-
-  draggable.classList.add("hidden");
-  draggableHead.classList.add("hidden");
-};
 
 // When the user clicks anywhere outside of the modal, close it
 // window.onclick = function (event) {
@@ -159,52 +196,3 @@ span.onclick = function () {
 //   }
 // };
 // bug btn
-
-// draggable window
-dragElement(document.getElementById("draggable"));
-
-function dragElement(elmnt) {
-  var pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
-
-//resizable window
-function resizeWindow() {
-  document.getElementById("draggable").style.resize = "both";
-}
